@@ -6,6 +6,7 @@
     >
 
     <Button
+        android:id="@+id/buttonC"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -16,6 +17,7 @@
         />
 
     <Button
+        android:id="@+id/buttonD"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -28,6 +30,7 @@
         />
 
     <Button
+        android:id="@+id/buttonE"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -40,6 +43,7 @@
         />
 
     <Button
+        android:id="@+id/buttonF"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -52,6 +56,7 @@
         />
 
     <Button
+        android:id="@+id/buttonG"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -64,6 +69,7 @@
         />
 
     <Button
+        android:id="@+id/buttonA"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -76,6 +82,7 @@
         />
 
     <Button
+        android:id="@+id/buttonB"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
