@@ -1,4 +1,4 @@
--app-package com.example.xylophone;
+package com.example.xylophone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
