@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.xylophone.R
 import com.example.xylophone.databinding.FragmentXylophoneBinding
+import kotlinx.coroutines.*
 import java.io.IOException
 import java.time.LocalDateTime
 
@@ -27,12 +29,14 @@ class XylophoneFragment: Fragment(), MediaPlayer.OnErrorListener {
     private lateinit var viewModelFactory: XylophoneViewModelFactory
     private var mediaPlayers = HashSet<Player>()
 
-//    private val fragmentJob = Job()
-//    private val uiScope = CoroutineScope(Dispatchers.Main + fragmentlJob)
+    private val fragmentJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + fragmentJob)
+
+    private lateinit var binding: FragmentXylophoneBinding
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: FragmentXylophoneBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_xylophone, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_xylophone, container, false)
         binding.lifecycleOwner = this
         viewModelFactory = XylophoneViewModelFactory()
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(XylophoneViewModel::class.java)
@@ -56,6 +60,8 @@ class XylophoneFragment: Fragment(), MediaPlayer.OnErrorListener {
 
                 registerPlayerListeners(player)
                 playSong(it.toLowerCase(),mediaPlayer)
+
+                touchButtonEffect(it)
             }
         })
     }
@@ -84,6 +90,49 @@ class XylophoneFragment: Fragment(), MediaPlayer.OnErrorListener {
             it.release()
             mediaPlayers.remove(player)
             Log.i("XylophoneFragment","Conteudo do hashSet: $mediaPlayers")
+        }
+    }
+
+    private fun touchButtonEffect(note: String){
+        val alpha = 0.5F
+        when(note){
+            "C" -> {
+                binding.buttonC.alpha = alpha
+                opacityEffectForButton(binding.buttonC)
+            }
+            "D" -> {
+                binding.buttonD.alpha = alpha
+                opacityEffectForButton(binding.buttonD)
+            }
+            "E" -> {
+                binding.buttonE.alpha = alpha
+                opacityEffectForButton(binding.buttonE)
+            }
+            "F" -> {
+                binding.buttonF.alpha = alpha
+                opacityEffectForButton(binding.buttonF)
+            }
+            "G" -> {
+                binding.buttonG.alpha = alpha
+                opacityEffectForButton(binding.buttonG)
+            }
+            "A" -> {
+                binding.buttonA.alpha = alpha
+                opacityEffectForButton(binding.buttonA)
+            }
+            "B" -> {
+                binding.buttonB.alpha = alpha
+                opacityEffectForButton(binding.buttonB)
+            }
+        }
+    }
+
+    private fun opacityEffectForButton(button: Button){
+        uiScope.launch {
+            withContext(Dispatchers.Default){
+                Thread.sleep(200)
+            }
+            button.alpha = 1F
         }
     }
 
