@@ -10,5 +10,8 @@ Initially, the app was built using basic features and worked as an introduction 
 - Language: Kotlin
 - Coroutines
 - DataBinding
+- MediaPlayer API
 
 ### :camera: - Screenshots
+<img src="/screenshots/screenshot1.jpeg" width="200">
+
