@@ -1,6 +1,6 @@
 package com.example.xylophone.xylophone
-
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class XylophoneViewModel: ViewModel() {
@@ -14,7 +14,15 @@ class XylophoneViewModel: ViewModel() {
     val note_A: String = "A"
     val note_B: String = "B"
 
+    private val _playEvent = MutableLiveData<String?>()
+    val playEvent: LiveData<String?>
+        get() = _playEvent
+
+    init{
+        _playEvent.value = null
+    }
+
     fun onNotePressed(note: String) {
-        Log.i("XylophoneViewModel", "Tocar nota: ${note}")
+        _playEvent.value = note
     }
 }
